@@ -19,3 +19,31 @@ A classe de dados deve se chamar Heroes e possuir a seguinte estrutura
     "usaCapa": true,
     "universo": "DC"
 }
+
+1. Models ou Collections
+Você já criou a classe Heroes como discutimos, que faz parte dessa etapa. Ela representa o modelo ou coleção que será armazenada no MongoDB.
+2. Repositories
+Crie uma pasta chamada Repositories.
+Dentro dela, crie uma interface IHeroRepository que define os métodos que você precisará, como GetAllHeroes, GetHeroById, CreateHero, UpdateHero, e DeleteHero.
+Depois, crie uma classe HeroRepository que implementa IHeroRepository. Nessa classe, faça a conexão com o MongoDB e implemente os métodos definidos na interface para realizar as operações de CRUD (Create, Read, Update, Delete).
+3. Services
+Crie uma pasta Services.
+Crie uma interface IHeroService que define os métodos de negócio que o serviço deve oferecer, como GetAllHeroes, GetHeroById, CreateHero, etc.
+Depois, crie uma classe HeroService que implementa IHeroService. Essa classe deve interagir com o repositório HeroRepository para obter, salvar, atualizar ou deletar dados, encapsulando a lógica de negócio.
+4. Configurar o Program.cs
+No arquivo Program.cs ou Startup.cs (dependendo da versão do .NET que você está usando), configure a injeção de dependência:
+Adicione os serviços e repositórios que você criou usando services.AddScoped<IHeroRepository, HeroRepository>() e services.AddScoped<IHeroService, HeroService>().
+Certifique-se de que a conexão com o MongoDB está configurada corretamente, usando a string de conexão presente no appsettings.json.
+5. Controllers
+Crie uma pasta Controllers.
+Dentro dela, crie o HeroController, que deve ser uma classe que herda de ControllerBase.
+Defina os endpoints que permitirão a interação com a API, como Get, Post, Put, e Delete. Esses métodos devem chamar o HeroService para realizar as operações.
+Resumo:
+Models/Collections: Criar a classe Heroes.
+Repositories: Implementar IHeroRepository e HeroRepository.
+Services: Implementar IHeroService e HeroService.
+Configurar Program: Configurar a injeção de dependência.
+Controllers: Criar HeroController para expor a API.
+
+git config --global user.name Heloisa-Moraes
+git config --global user.email helomoraes2009@hotmail.com 
